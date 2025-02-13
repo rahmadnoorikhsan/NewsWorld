@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">News World</string>
+    <string name="title_home">Home</string>
+    <string name="title_history">History</string>
+    <string name="publishedAt">" \u2022 %1$s"</string>
+    <string name="search_hint">Search</string>
+    <string name="see_more">See More</string>
+    <string name="empty_news">Kamu belum pernah membaca berita. Yuk, mulai jelajahi berita terbaru dan tetap up-to-date dengan informasi terkini!</string>
+</resources>

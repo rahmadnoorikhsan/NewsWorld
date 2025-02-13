@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_view">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_news"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/iv_news"
+                app:layout_constraintStart_toStartOf="@id/iv_news"
+                app:layout_constraintTop_toBottomOf="@id/iv_news"
+                tools:text="Presiden RI bekerja sama dengan Presiden USA untuk membangun Bandara" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="Presiden RI yaitu Bapak Presiden Joko Widodo, melakukan kerja sama dengan Presiden USA untuk membangun sebuah bandara." />
+
+            <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="8dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="?attr/colorPrimary"
+                app:drawableStartCompat="@drawable/ic_person_outline"
+                app:layout_constraintEnd_toStartOf="@id/tv_date"
+                app:layout_constraintStart_toStartOf="@id/tv_description"
+                app:layout_constraintTop_toBottomOf="@id/tv_description"
+                tools:text="CNN Indonesia" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                app:layout_constraintBottom_toBottomOf="@id/tv_author"
+                app:layout_constraintEnd_toEndOf="@id/tv_description"
+                app:layout_constraintStart_toEndOf="@id/tv_author"
+                app:layout_constraintTop_toTopOf="@id/tv_author"
+                tools:text="Senin, 20 Februari 20:30" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintEnd_toEndOf="@id/tv_date"
+                app:layout_constraintStart_toStartOf="@id/tv_author"
+                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                tools:text="Jakarta, 12 Februari 2025 – Presiden Republik Indonesia bersama dengan Presiden Amerika Serikat resmi menandatangani kesepakatan kerja sama strategis dalam pembangunan bandara internasional baru di Indonesia. Proyek ini bertujuan untuk meningkatkan konektivitas udara, memperkuat hubungan ekonomi, serta membuka peluang investasi di sektor transportasi dan pariwisata.Dalam pertemuan bilateral yang berlangsung di Jakarta, kedua pemimpin negara menegaskan komitmen mereka untuk mempercepat pembangunan infrastruktur guna mendukung pertumbuhan ekonomi dan perdagangan antarnegara. Bandara yang direncanakan ini akan dibangun dengan teknologi canggih serta berkonsep ramah lingkungan, memanfaatkan energi terbarukan untuk operasionalnya." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="4dp"
+    android:background="@drawable/shadow"
+    app:layout_constraintBottom_toTopOf="@id/bottom_view" />
+
+    <View
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="16dp"
+        android:outlineProvider="background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_see_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/see_more"
+        android:layout_margin="16dp"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
+        app:layout_constraintTop_toTopOf="@id/bottom_view"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_view"
+        app:layout_constraintStart_toStartOf="@id/bottom_view"
+        app:layout_constraintEnd_toEndOf="@id/bottom_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
