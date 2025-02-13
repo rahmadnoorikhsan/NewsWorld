@@ -3,6 +3,7 @@ package com.rahmad.newsworld.ui.detail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
@@ -17,6 +18,7 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private val navArgs by navArgs<DetailActivityArgs>()
+    private val detailViewModel by viewModels<DetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

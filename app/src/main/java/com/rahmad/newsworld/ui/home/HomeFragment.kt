@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
     private val homeViewModel by viewModels<HomeViewModel>()
+    private var isRead: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +44,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupSearchView()
+
     }
 
     private fun setupSearchView() {
@@ -86,17 +88,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView(news: List<News>) {
-        val newsAdapter = NewsAdapter { newsData ->
-            homeViewModel.isReadNews(newsData.title ?: "").observe(viewLifecycleOwner) { isRead ->
-                if (isRead) {
-                    moveToUrl(newsData.url ?: "")
-                } else {
-                    moveToDetail(newsData)
-                    homeViewModel.insertNews(newsData.toEntity())
-                }
+        val newsAdapter = NewsAdapter { newsItem ->
+            if (newsItem.isRead) {
+                moveToUrl(newsItem.url ?: "")
+            } else {
+                newsItem.isRead = true
+                homeViewModel.insertNews(newsItem.toEntity())
+                moveToDetail(newsItem)
             }
-
         }
+
         val gridLayoutManager = GridLayoutManager(requireActivity(), 2)
 
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

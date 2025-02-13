@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface NewsDao {
 
+    @Query("SELECT * FROM news ORDER BY publishedAt DESC")
+    fun getNews(): LiveData<List<NewsEntity>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(newsEntity: NewsEntity)
 

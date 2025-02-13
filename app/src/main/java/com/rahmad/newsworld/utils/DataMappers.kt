@@ -14,7 +14,8 @@ object DataMappers{
         title = title,
         url = url,
         content = content,
-        isHeader = false
+        isHeader = false,
+        isRead = false
     )
 
     fun News.toEntity() = NewsEntity(
@@ -22,6 +23,6 @@ object DataMappers{
         publishedAt = publishedAt,
         urlToImage = urlToImage,
         url = url,
-        isRead = true
+        isRead = false
     )
 }

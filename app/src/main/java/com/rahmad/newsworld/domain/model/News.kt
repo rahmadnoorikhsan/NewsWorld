@@ -14,5 +14,6 @@ data class News(
     val title: String? = null,
     val url: String? = null,
     val content: String? = null,
-    var isHeader: Boolean = false
+    var isHeader: Boolean = false,
+    var isRead: Boolean = false
 ) : Parcelable
