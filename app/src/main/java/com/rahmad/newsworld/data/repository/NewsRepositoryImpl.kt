@@ -46,4 +46,6 @@ class NewsRepositoryImpl @Inject constructor(
     override suspend fun updateNews(newsEntity: NewsEntity) = localDataSource.insertNews(newsEntity)
 
     override fun getHasBeenReadNews() = localDataSource.getHasBeenReadNews()
+
+    override fun isReadNews(title: String) = localDataSource.isReadNews(title)
 }

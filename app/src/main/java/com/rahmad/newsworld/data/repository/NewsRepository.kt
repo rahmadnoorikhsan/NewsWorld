@@ -10,4 +10,5 @@ interface NewsRepository {
     fun getNews(q: String): Flow<ApiResult<List<News>>>
     suspend fun updateNews(newsEntity: NewsEntity)
     fun getHasBeenReadNews(): LiveData<List<NewsEntity>>
+    fun isReadNews(title: String): Flow<Boolean>
 }

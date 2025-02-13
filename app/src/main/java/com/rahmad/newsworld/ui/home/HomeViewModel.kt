@@ -19,4 +19,6 @@ class HomeViewModel @Inject constructor(
     fun insertNews(newsEntity: NewsEntity) = viewModelScope.launch {
         newsRepository.updateNews(newsEntity)
     }
+
+    fun isReadNews(title: String) = newsRepository.isReadNews(title).asLiveData()
 }
