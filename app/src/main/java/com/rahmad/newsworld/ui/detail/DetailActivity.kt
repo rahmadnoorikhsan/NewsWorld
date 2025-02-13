@@ -11,14 +11,15 @@ import androidx.navigation.navArgs
 import com.rahmad.newsworld.R
 import com.rahmad.newsworld.databinding.ActivityDetailBinding
 import com.rahmad.newsworld.domain.model.News
+import com.rahmad.newsworld.utils.DataMappers.toEntity
 import com.rahmad.newsworld.utils.DateFormatter
 import com.rahmad.newsworld.utils.Extensions.showImageInto
+import dagger.hilt.android.AndroidEntryPoint
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private val navArgs by navArgs<DetailActivityArgs>()
-    private val detailViewModel by viewModels<DetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

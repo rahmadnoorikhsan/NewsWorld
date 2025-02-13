@@ -13,6 +13,4 @@ class LocalDataSource @Inject constructor(
     fun getHasBeenReadNews() = newsDao.getHasBeenReadNews()
 
     suspend fun insertNews(newsEntity: NewsEntity) = newsDao.insertNews(newsEntity)
-
-    fun isReadNews(title: String) = newsDao.isReadNews(title)
 }

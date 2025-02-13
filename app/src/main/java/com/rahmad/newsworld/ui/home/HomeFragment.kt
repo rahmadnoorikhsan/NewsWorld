@@ -1,7 +1,5 @@
 package com.rahmad.newsworld.ui.home
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +24,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
     private val homeViewModel by viewModels<HomeViewModel>()
-    private var isRead: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,13 +86,8 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView(news: List<News>) {
         val newsAdapter = NewsAdapter { newsItem ->
-            if (newsItem.isRead) {
-                moveToUrl(newsItem.url ?: "")
-            } else {
-                newsItem.isRead = true
-                homeViewModel.insertNews(newsItem.toEntity())
-                moveToDetail(newsItem)
-            }
+            homeViewModel.insertNews(newsItem.toEntity())
+            moveToDetail(newsItem)
         }
 
         val gridLayoutManager = GridLayoutManager(requireActivity(), 2)
@@ -112,12 +104,6 @@ class HomeFragment : Fragment() {
             adapter = newsAdapter
         }
         newsAdapter.submitList(news)
-    }
-
-    private fun moveToUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(url)
-        requireContext().startActivity(intent)
     }
 
     private fun moveToDetail(news: News) {
